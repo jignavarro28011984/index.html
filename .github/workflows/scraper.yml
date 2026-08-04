@@ -1,22 +1,20 @@
-name: Bot Rastreador Diario
+- name: Configurar Python
+    uses: actions/setup-python@v4
+    with:
+      python-version: '3.10'
 
-on:
-  schedule:
-    - cron: '0 11 * * *'
-  workflow_dispatch:
+  - name: Instalar librerías de rastreo web
+    run: |
+      pip install beautifulsoup4 requests
 
-jobs:
-  run-scraper:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-      - run: python scraper.py
-      - run: |
-          git config --global user.name "Bot-RRHH"
-          git config --global user.email "bot@github.com"
-          git add vacantes.json
-          git commit -m "🤖 Actualización de vacantes" || exit 0
-          git push
+  - name: Ejecutar el rastreador de Python
+    run: |
+      python scraper.py
+
+  - name: Guardar y publicar vacantes.json actualizadas
+    run: |
+      git config --global user.name "Bot-RRHH-Noelia"
+      git config --global user.email "bot@github.com"
+      git add vacantes.json
+      git commit -m "🤖 Actualización automática de vacantes de RRHH" || exit 0
+      git push
