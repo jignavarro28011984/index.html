@@ -1,20 +1,27 @@
-- name: Configurar Python
-    uses: actions/setup-python@v4
-    with:
-      python-version: '3.10'
+name: Recolector de Empleo RRHH Uruguay
 
-  - name: Instalar librerías de rastreo web
-    run: |
-      pip install beautifulsoup4 requests
+on:
+  schedule:
+    - cron: '0 8 * * *'
+  workflow_dispatch:
 
-  - name: Ejecutar el rastreador de Python
-    run: |
-      python scraper.py
+jobs:
+  run-scraper:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configurar repositorio
+        uses: actions/checkout@v3
 
-  - name: Guardar y publicar vacantes.json actualizadas
-    run: |
-      git config --global user.name "Bot-RRHH-Noelia"
-      git config --global user.email "bot@github.com"
-      git add vacantes.json
-      git commit -m "🤖 Actualización automática de vacantes de RRHH" || exit 0
-      git push
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Ejecutar script de búsqueda
+        run: python scraper.py
+
+      - name: Guardar y subir cambios al sitio
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Actualización automática de vacantes de RRHH"
+          file_pattern: vacantes.json
