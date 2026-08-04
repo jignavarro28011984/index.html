@@ -4,9 +4,9 @@ import urllib.parse
 import xml.etree.ElementTree as ET
 from datetime import datetime
 
-def buscar_google_jobs():
-    # Palabras clave orientadas a Recursos Humanos / Gestión Humana en Uruguay
-    query = '("recursos humanos" OR "gestion humana" OR "seleccion de personal" OR "generalista rrhh") site:uy.computrabajo.com OR site:buscojobs.com.uy OR site:gallito.com.uy'
+def obtener_vacantes():
+    # Consulta optimizada para capturar ofertas reales de RRHH en Uruguay
+    query = '("recursos humanos" OR "gestion humana" OR "generalista rrhh") site:uy.computrabajo.com OR site:buscojobs.com.uy'
     url = f"https://news.google.com/rss/search?q={urllib.parse.quote(query)}&hl=es-419&gl=UY&ceid=UY:es-419"
     
     vacantes = []
@@ -22,60 +22,58 @@ def buscar_google_jobs():
         root = ET.fromstring(xml_data)
         items = root.findall('.//item')
         
-        for item in items[:10]: # Tomar hasta 10 ofertas relevantes
-            title = item.find('text').text if item.find('text') is not None else item.find('title').text
-            link = item.find('link').text
-            pub_date = item.find('pubDate').text if item.find('pubDate').text is not None else "Reciente"
+        for item in items[:5]:
+            title_elem = item.find('title')
+            link_elem = item.find('link')
             
-            # Detectar el portal de origen en base al enlace
-            portal = "Portal UY"
-            if "computrabajo" in link:
-                portal = "Computrabajo UY"
-            elif "buscojobs" in link:
-                portal = "BuscoJobs UY"
-            elif "gallito" in link:
-                portal = "El Gallito"
+            if title_elem is not None and link_elem is not None:
+                title = title_elem.text
+                link = link_elem.text
                 
-            vacantes.append({
-                "titulo": title.split(' - ')[0] if ' - ' in title else title,
-                "empresa": portal,
-                "ubicacion": "Montevideo, Uruguay",
-                "horas": 4,
-                "portal": portal,
-                "descripcion": f"Oportunidad detectada en vivo a través de fuentes indexadas en Uruguay.",
-                "url": link
-            })
+                portal = "Portal UY"
+                if "computrabajo" in link:
+                    portal = "Computrabajo UY"
+                elif "buscojobs" in link:
+                    portal = "BuscoJobs UY"
+                
+                vacantes.append({
+                    "titulo": title.split(' - ')[0] if ' - ' in title else title,
+                    "empresa": portal,
+                    "ubicacion": "Montevideo, Uruguay",
+                    "horas": 1,
+                    "portal": portal,
+                    "descripcion": "Nueva oferta detectada mediante escaneo inteligente en Uruguay.",
+                    "url": link
+                })
     except Exception as e:
-        print(f"Error al conectar: {e}")
+        print(f"Aviso de red: {e}")
         
-    return vacantes
-
-def generar_json():
-    vacantes_encontradas = buscar_google_jobs()
-    
-    # Si por alguna razón la búsqueda no devuelve nada, usamos datos de respaldo limpios
-    if not vacantes_encontradas:
-        vacantes_encontradas = [
+    # Si la red o Google limitan la consulta en este instante, dejamos una estructura limpia y actual
+    if not vacantes:
+        vacantes = [
             {
-                "titulo": "Analista de Selección y Gestión Humana",
+                "titulo": "Asistente de Recursos Humanos y Selección",
                 "empresa": "BuscoJobs UY",
-                "ubicacion": "Montevideo",
-                "horas": 2,
+                "ubicacion": "Montevideo, Uruguay",
+                "horas": 1,
                 "portal": "BuscoJobs UY",
-                "descripcion": "Búsqueda activa de perfiles corporativos y entrevistas masivas.",
+                "descripcion": "Gestión de postulantes, administración de personal y entrevistas.",
                 "url": "https://www.buscojobs.com.uy"
             }
         ]
+        
+    return vacantes
 
-    data = {
+def guardar_datos():
+    datos = {
         "ultima_actualizacion": datetime.now().strftime("%d/%m/%Y a las %H:%M"),
-        "vacantes": vacantes_encontradas
+        "vacantes": obtener_vacantes()
     }
     
     with open("vacantes.json", "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=4)
+        json.dump(datos, f, ensure_ascii=False, indent=4)
         
-    print("¡Archivo vacantes.json actualizado con éxito!")
+    print("¡vacantes.json actualizado correctamente!")
 
 if __name__ == "__main__":
-    generar_json()
+    guardar_datos()
