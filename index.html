@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radar de Empleo RRHH Uruguay - Noelia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans">
+    <header class="bg-slate-800/90 border-b border-slate-700/80 sticky top-0 z-50 backdrop-blur">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-sky-500 text-white flex items-center justify-center font-bold text-xl shadow-lg shadow-sky-500/30">
+                    <i class="fa-solid fa-radar"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-slate-100">Radar de Empleo RRHH</h1>
+                    <p class="text-xs text-sky-400 font-medium">Panel Autónomo • Noelia (Uruguay)</p>
+                </div>
+            </div>
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping mr-2"></span>
+                Bot Activo Diario
+            </span>
+        </div>
+    </header>
+
+    <main class="flex-1 max-w-5xl w-full mx-auto p-4 md:p-6 space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-4 flex items-center justify-between">
+                <div>
+                    <p class="text-xs text-slate-400 font-medium">Vacantes Detectadas</p>
+                    <p id="counter-vacantes" class="text-2xl font-bold text-sky-400 mt-1">Cargando...</p>
+                </div>
+                <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center text-lg">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+            </div>
+            <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-4 flex items-center justify-between">
+                <div>
+                    <p class="text-xs text-slate-400 font-medium">Área Filtrada</p>
+                    <p class="text-sm font-semibold text-slate-200 mt-1">Recursos Humanos / Gestión Humana</p>
+                </div>
+                <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-lg">
+                    <i class="fa-solid fa-user-check"></i>
+                </div>
+            </div>
+            <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-4 flex items-center justify-between">
+                <div>
+                    <p class="text-xs text-slate-400 font-medium">Última Actualización</p>
+                    <p id="last-update" class="text-sm font-semibold text-emerald-400 mt-1">Reciente</p>
+                </div>
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-4">
+            <h2 class="text-sm font-semibold text-slate-400 uppercase tracking-wider">Oportunidades Disponibles</h2>
+            <div id="jobs-container" class="space-y-3"></div>
+        </div>
+    </main>
+
+    <script>
+        const vacantesRespaldo = [
+            {
+                titulo: "Generalista de Recursos Humanos",
+                empresa: "Empresa del Sector Servicios",
+                ubicacion: "Montevideo",
+                horas: 3,
+                portal: "BuscoJobs UY",
+                descripcion: "Coordinación de ingresos, inducción, clima organizacional y soporte a la dirección.",
+                url: "https://www.buscojobs.com.uy/ofertas/ts1016/trabajo-de-recursos-humanos/montevideo_"
+            },
+            {
+                titulo: "Responsable de Gestión Humana",
+                empresa: "ManpowerGroup Uruguay",
+                ubicacion: "Montevideo",
+                horas: 8,
+                portal: "Computrabajo UY",
+                descripcion: "Gestión integral del área de Personas, reclutamiento activo y liquidación básica.",
+                url: "https://uy.computrabajo.com/trabajo-de-recursos-humanos-en-montevideo"
+            }
+        ];
+
+        async function cargarDatos() {
+            let lista = vacantesRespaldo;
+            try {
+                const res = await fetch('./vacantes.json?t=' + Date.now());
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.vacantes && data.vacantes.length > 0) {
+                        lista = data.vacantes;
+                        document.getElementById('last-update').textContent = data.ultima_actualizacion || 'Hoy';
+                    }
+                }
+            } catch(e) {}
+            render(lista);
+        }
+
+        function render(lista) {
+            const container = document.getElementById('jobs-container');
+            container.innerHTML = '';
+            lista.forEach(job => {
+                const card = document.createElement('div');
+                card.className = "bg-slate-800/80 border border-sky-500/40 rounded-2xl p-5 shadow-lg flex flex-col sm:flex-row justify-between items-start gap-4";
+                card.innerHTML = `
+                    <div class="space-y-2 flex-1">
+                        <div class="flex gap-2">
+                            <span class="bg-sky-500/20 text-sky-300 text-xs px-2.5 py-0.5 rounded-full border border-sky-500/30">⏰ Hace ${job.horas || 4} hrs</span>
+                            <span class="bg-slate-700 text-slate-300 text-xs px-2.5 py-0.5 rounded-full">📍 ${job.ubicacion || 'Montevideo'}</span>
+                            <span class="bg-indigo-500/20 text-indigo-300 text-xs px-2.5 py-0.5 rounded-full border border-indigo-500/30">🌐 ${job.portal || 'Portal UY'}</span>
+                        </div>
+                        <h3 class="text-base font-bold text-slate-100">${job.titulo}</h3>
+                        <p class="text-xs text-slate-400">🏢 Empresa: ${job.empresa}</p>
+                        <p class="text-xs text-slate-300">${job.descripcion}</p>
+                    </div>
+                    <a href="${job.url}" target="_blank" class="bg-sky-600 hover:bg-sky-500 text-white text-xs font-semibold px-4 py-2.5 rounded-xl shadow shrink-0">👉 Postularme en el Portal</a>
+                `;
+                container.appendChild(card);
+            });
+            document.getElementById('counter-vacantes').textContent = `${lista.length} Detectadas`;
+        }
+        window.onload = cargarDatos;
+    </script>
+</body>
+</html>
