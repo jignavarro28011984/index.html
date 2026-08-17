@@ -1,198 +1,754 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radar de Empleo RRHH Uruguay - Noelia</title>
+    <title>Avanzar RH | Selección & Gestión de Talento</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        avanzarBlue: '#005b8e',
+                        avanzarBlueHover: '#004770',
+                        avanzarDark: '#0a131f',
+                        avanzarCard: '#111c2e',
+                        avanzarCardBorder: '#1e2d45',
+                        avanzarAccent: '#f59e0b',
+                        avanzarAccentHover: '#d97706',
+                        avanzarCyan: '#38bdf8'
+                    }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans">
+<body class="bg-avanzarDark text-slate-200 font-sans antialiased selection:bg-avanzarBlue selection:text-white pb-20 relative">
 
-    <!-- Header -->
-    <header class="bg-slate-800/90 border-b border-slate-700/80 sticky top-0 z-50 backdrop-blur">
-        <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-3">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl bg-sky-500 text-white flex items-center justify-center font-bold text-xl shadow-lg shadow-sky-500/30">
-                    <i class="fa-solid fa-radar"></i>
+    <!-- BOTÓN FLOTANTE DE CONSULTA POR CHAT -->
+    <a href="https://wa.me/59899343810" target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-5 rounded-full shadow-2xl flex items-center space-x-2 transition transform hover:scale-105 border border-emerald-400/30">
+        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 2.17.69 4.19 1.86 5.86L2.5 21.5l3.74-1.33C7.86 21.28 9.86 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.88 0-3.64-.56-5.12-1.52l-.37-.24-2.22.79.8-2.15-.26-.38C3.84 15.02 3.2 13.57 3.2 12c0-4.85 3.95-8.8 8.8-8.8s8.8 3.95 8.8 8.8-3.95 8.8-8.8 8.8z"/></svg>
+        <span>¡Consulta Directa!</span>
+    </a>
+
+    <!-- NAV BAR -->
+    <nav class="sticky top-0 z-40 bg-avanzarDark/95 backdrop-blur-md border-b border-avanzarCardBorder">
+        <div class="flex items-center justify-between px-6 py-3 max-w-7xl mx-auto">
+            
+            <!-- LOGO AVANZAR RH -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                <div class="bg-white p-2 rounded-xl shadow-md border border-slate-200 flex items-center justify-center">
+                    <svg class="h-9 w-auto" viewBox="0 0 220 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 25 65 C 25 57, 33 57, 33 65 C 33 73, 25 73, 25 65 Z" fill="#005b8e"/>
+                        <path d="M 20 95 C 20 80, 38 80, 38 95 Z" fill="#005b8e"/>
+                        <path d="M 50 40 C 50 28, 66 28, 66 40 C 66 52, 50 52, 50 40 Z" fill="#005b8e"/>
+                        <path d="M 40 100 L 58 55 L 76 100 L 66 100 L 58 75 L 50 100 Z" fill="#005b8e"/>
+                        <path d="M 78 65 C 78 57, 86 57, 86 65 C 86 73, 78 73, 78 65 Z" fill="#005b8e"/>
+                        <path d="M 73 95 C 73 80, 91 80, 91 95 Z" fill="#005b8e"/>
+                        <text x="88" y="72" font-family="'Brush Script MT', cursive, sans-serif" font-size="46" font-weight="bold" font-style="italic" fill="#005b8e">Avanzar</text>
+                        <path d="M 88 82 Q 145 92 195 78" stroke="#005b8e" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+                        <text x="148" y="108" font-family="'Arial Black', sans-serif" font-size="22" font-weight="900" fill="#005b8e">RH</text>
+                    </svg>
                 </div>
                 <div>
-                    <h1 class="text-lg font-bold text-slate-100">Radar de Empleo RRHH</h1>
-                    <p class="text-xs text-sky-400 font-medium">Panel Autónomo • Noelia (Uruguay)</p>
+                    <p class="font-black tracking-tight text-white text-base uppercase leading-none">Avanzar <span class="text-avanzarCyan">RH</span></p>
+                    <p class="text-[11px] text-slate-400 font-medium">Tu aliado estratégico en gestión y crecimiento empresarial</p>
+                </div>
+            </div>
+
+            <div class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-wider text-slate-300">
+                <a href="#sobre-mi" class="hover:text-avanzarCyan transition">Sobre Mí</a>
+                <a href="#comparativa" class="hover:text-avanzarCyan transition">Optimización</a>
+                <a href="#unidades" class="hover:text-avanzarCyan transition">Servicios</a>
+                <a href="#casos" class="hover:text-avanzarCyan transition">Confían en Nosotros</a>
+                <a href="#contacto" class="hover:text-avanzarCyan transition">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION OPTIMIZADA -->
+    <section class="relative py-16 px-4 text-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-950/40 via-avanzarDark to-avanzarDark border-b border-avanzarCardBorder">
+        <div class="max-w-4xl mx-auto space-y-6">
+            
+            <!-- Píldora Superior -->
+            <div>
+                <span class="bg-avanzarBlue/30 text-avanzarCyan border border-avanzarBlue/50 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase shadow-sm inline-block">
+                    CONSULTORÍA EN GESTIÓN HUMANA | HRBP & RECRUITING
+                </span>
+            </div>
+
+            <!-- Titular Principal -->
+            <h1 class="space-y-2">
+                <span class="block text-base md:text-xl font-medium text-slate-300 tracking-normal leading-relaxed max-w-2xl mx-auto">
+                    Ordenás tu equipo, mejorás tu clima laboral y hacés crecer tu empresa
+                </span>
+                <span class="block text-2xl md:text-5xl font-black text-avanzarCyan uppercase tracking-tight leading-tight drop-shadow-md">
+                    sin necesitar un área de RRHH interna
+                </span>
+            </h1>
+
+            <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-avanzarCyan to-transparent mx-auto opacity-70"></div>
+
+            <p class="text-slate-300 max-w-2xl mx-auto text-xs md:text-base leading-relaxed font-normal">
+                Acompañamos a Emprendimientos de Pymes, Escritorios Rurales, Empresas del Agro e Inmobiliarias a profesionalizar la selección de sus equipos comerciales y de confianza.
+            </p>
+
+            <!-- SECCIÓN SOBRE MÍ INTEGRADA -->
+            <div id="sobre-mi" class="pt-6 text-left max-w-3xl mx-auto">
+                <div class="bg-avanzarCard p-6 md:p-8 rounded-3xl border border-avanzarCardBorder shadow-2xl relative overflow-hidden">
+                    <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6 border-b border-slate-800 pb-6">
+                        
+                        <!-- Avatar estilizado de Noelia -->
+                        <div class="relative shrink-0">
+                            <div class="w-24 h-24 md:w-28 md:h-28 rounded-full border-2 border-avanzarCyan shadow-xl shadow-sky-950/50 bg-slate-900 flex items-center justify-center">
+                                <span class="text-3xl font-black text-avanzarCyan">NG</span>
+                            </div>
+                            <span class="absolute bottom-1 right-1 w-4 h-4 bg-emerald-500 border-2 border-avanzarCard rounded-full" title="Disponible para Diagnóstico"></span>
+                        </div>
+
+                        <div class="text-center md:text-left space-y-2 flex-1">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+                                <div>
+                                    <span class="text-xs text-avanzarCyan font-bold uppercase tracking-widest">Sobre Mí</span>
+                                    <h2 class="text-2xl font-bold text-white">Noelia Gorgerino</h2>
+                                </div>
+                                <!-- Enlace Oficial a LinkedIn -->
+                                <a href="https://www.linkedin.com/in/noelia-gorgerino-b5511a66/" target="_blank" class="inline-flex items-center justify-center space-x-2 bg-[#0a66c2] hover:bg-[#084e96] text-white text-xs font-bold py-2 px-4 rounded-xl transition shadow-md w-fit">
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                                    <span>Ver Perfil en LinkedIn</span>
+                                </a>
+                            </div>
+                            <p class="text-xs text-slate-400 font-medium">Licenciada en Gestión de Recursos Humanos & Coach Ontológica</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 pt-4 text-xs md:text-sm text-slate-300 leading-relaxed">
+                        <p><strong>¡Hola! Soy Noelia Gorgerino</strong>, Licenciada en Gestión de Recursos Humanos y Coach Ontológica.</p>
+                        <p>Profesional de Recursos Humanos con una trayectoria sólida en la gestión integral de áreas de Gestión Humana. Mi experiencia abarca desde el reclutamiento masivo y la selección por competencias hasta la administración y gestión de nóminas complejas de hasta 300 empleados.</p>
+                        <p>Combino una visión analítica orientada al detalle con mi formación como Coach Ontológico para ofrecer soluciones que no solo optimizan procesos, sino que también potencian el clima laboral y el desarrollo de equipos. Creo capacitaciones a medida, pensadas en dar respuestas concretas a situaciones reales siendo prácticas y generando impacto que no se olvida.</p>
+                        <p class="text-xs md:text-sm text-avanzarCyan font-semibold italic pt-3 border-t border-slate-800/80">
+                            "Lo más importante, primero te conozco, luego, voy a tu empresa, entiendo tu operación y luego hablamos de estrategias y mediciones para ayudarte con tus objetivos."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+                <a href="#contacto" class="bg-avanzarAccent hover:bg-avanzarAccentHover text-slate-950 font-black py-4 px-8 rounded-full shadow-lg shadow-amber-500/20 transition duration-300 uppercase text-xs tracking-wider">
+                    Solicitar Asesoría Inicial
+                </a>
+                <a href="#unidades" class="border border-avanzarCardBorder bg-avanzarCard/60 text-slate-200 hover:bg-avanzarCard font-bold py-4 px-8 rounded-full transition duration-300 uppercase text-xs tracking-wider">
+                    Ver Soluciones
+                </a>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- SECCIÓN COMPARATIVA -->
+    <section id="comparativa" class="py-16 px-4 max-w-6xl mx-auto space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-1">
+            <h2 class="text-2xl md:text-3xl font-bold text-white uppercase tracking-tight">Evoluciona tu Proceso de Selección</h2>
+            <p class="text-slate-400 text-xs md:text-sm">El riesgo de la improvisación interna vs. La tranquilidad de una estructura garantizada</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 items-stretch">
+            
+            <!-- In-House (El Dolor) -->
+            <div class="bg-slate-950/90 rounded-3xl p-6 md:p-8 border-2 border-red-900/50 shadow-inner space-y-6 flex flex-col justify-between opacity-90 hover:opacity-100 transition">
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center border-b border-red-950 pb-3">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-red-500 text-lg">⚠️</span>
+                            <h3 class="text-sm font-bold text-red-400 uppercase tracking-wider">Gestión Directa In-House</h3>
+                        </div>
+                        <span class="text-[9px] bg-red-950 text-red-400 px-2.5 py-1 rounded-full uppercase font-bold border border-red-800/40">Fuga de Dinero y Tiempo</span>
+                    </div>
+                    
+                    <div class="bg-red-950/20 rounded-2xl p-4 border border-red-900/30 space-y-3 text-xs text-slate-300">
+                        <div class="flex items-center space-x-3">
+                            <span class="w-7 h-7 rounded-full bg-red-900/40 text-red-400 font-bold flex items-center justify-center shrink-0">❌</span>
+                            <p><strong>CVs masivos sin filtrar:</strong> Pérdida de días revisando perfiles no aptos que saturan tu correo.</p>
+                        </div>
+                        <div class="w-full bg-red-900/20 h-0.5"></div>
+                        <div class="flex items-center space-x-3">
+                            <span class="w-7 h-7 rounded-full bg-red-900/40 text-red-400 font-bold flex items-center justify-center shrink-0">⏱️</span>
+                            <p><strong>Desvío directivo:</strong> Horas claves de los dueños invertidas en entrevistas en lugar de vender.</p>
+                        </div>
+                        <div class="w-full bg-red-900/20 h-0.5"></div>
+                        <div class="flex items-center space-x-3">
+                            <span class="w-7 h-7 rounded-full bg-red-900/40 text-red-400 font-bold flex items-center justify-center shrink-0">💸</span>
+                            <p><strong>Costo por mala contratación:</strong> Pérdida de sueldos e inducción si el candidato renuncia al mes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-1.5 pt-3 border-t border-slate-900 text-[11px] text-red-400/90 font-medium">
+                    <p>• Demanda tiempo directo de los dueños o gerentes en filtros iniciales.</p>
+                    <p>• Cero métricas de evaluación objetiva y sin garantía de reemplazo formal.</p>
+                </div>
+            </div>
+
+            <!-- Con Avanzar RH (La Solución) -->
+            <div class="bg-gradient-to-b from-avanzarCard to-slate-900 rounded-3xl p-6 md:p-8 border-2 border-avanzarCyan shadow-2xl shadow-sky-950/80 space-y-6 flex flex-col justify-between relative transform md:-translate-y-2">
+                <span class="absolute -top-3.5 right-6 bg-avanzarAccent text-slate-950 text-[10px] font-black px-4 py-1 rounded-full uppercase tracking-wider shadow-md">
+                    ★ Cero Carga Operativa
+                </span>
+                
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center border-b border-avanzarBlue/40 pb-3">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-avanzarCyan text-lg">⚡</span>
+                            <h3 class="text-base font-bold text-white uppercase tracking-wider">Con Avanzar RH</h3>
+                        </div>
+                        <span class="text-[9px] bg-sky-950 text-avanzarCyan px-2.5 py-1 rounded-full uppercase font-bold border border-sky-800">Decisión Certera</span>
+                    </div>
+
+                    <div class="bg-slate-900/90 rounded-2xl p-4 border border-avanzarCyan/40 shadow-lg space-y-3 text-xs">
+                        <div class="flex items-center space-x-3 text-avanzarCyan font-semibold">
+                            <span class="w-7 h-7 rounded-full bg-avanzarBlue text-white font-bold flex items-center justify-center shrink-0">🎯</span>
+                            <p><strong>Filtro riguroso:</strong> Entrevistas profundas por competencias y análisis de adecuación cultural.</p>
+                        </div>
+                        <div class="w-full bg-sky-900/40 h-0.5"></div>
+                        <div class="flex items-center space-x-3 text-avanzarCyan font-semibold">
+                            <span class="w-7 h-7 rounded-full bg-avanzarBlue text-white font-bold flex items-center justify-center shrink-0">📊</span>
+                            <p><strong>Dossier Ejecutivo:</strong> Informe completo con referencias laborales verificadas antes de decidir.</p>
+                        </div>
+                        <div class="w-full bg-sky-900/40 h-0.5"></div>
+                        <div class="flex items-center space-x-3 text-emerald-400 font-bold">
+                            <span class="w-7 h-7 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center shrink-0">🛡️</span>
+                            <p><strong>Garantía de Reemplazo por 90 Días:</strong> Cobertura por escrito sin costos adicionales.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-1.5 pt-3 border-t border-slate-800 text-xs text-avanzarCyan font-medium">
+                    <p class="flex items-center space-x-1.5">
+                        <span class="text-emerald-400">✔</span>
+                        <span>Recibes una terna final evaluada y lista para entrevistar.</span>
+                    </p>
+                    <p class="flex items-center space-x-1.5">
+                        <span class="text-emerald-400">✔</span>
+                        <span>Mantienes tu foco en la facturación mientras gestionamos el reclutamiento.</span>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- UNIDADES DE TRABAJO -->
+    <section id="unidades" class="py-16 px-4 max-w-6xl mx-auto space-y-12">
+        <div class="text-center space-y-2">
+            <span class="text-xs text-avanzarCyan font-bold uppercase tracking-widest">Servicios Especializados</span>
+            <h2 class="text-3xl font-bold text-white uppercase tracking-tight">Nuestras Soluciones de Gestión Humana</h2>
+            <p class="text-slate-400 text-sm max-w-2xl mx-auto">Programas integrales adaptados a las necesidades operativas de tu empresa.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            
+            <!-- 1. Reclutamiento y Selección -->
+            <div class="bg-avanzarCard rounded-3xl border border-avanzarCardBorder overflow-hidden shadow-xl flex flex-col justify-between">
+                <div>
+                    <div class="h-44 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80" alt="Selección de Personal" class="w-full h-full object-cover opacity-70">
+                        <div class="absolute inset-0 bg-gradient-to-t from-avanzarCard via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 bg-avanzarBlue/90 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Selección Especializada</span>
+                    </div>
+                    
+                    <div class="p-6 md:p-8 space-y-3">
+                        <h3 class="font-bold text-white text-xl">Reclutamiento y Selección de Personal por Competencias</h3>
+                        <p class="text-xs text-amber-400 font-bold leading-relaxed">
+                            Análisis y evaluación de perfiles acordes a sus necesidades y cultura organizacional.
+                        </p>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Recruiter con trayectoria en la selección de perfiles operativos, comerciales y mandos medios a nivel nacional e internacional. Especialista en procesos de reclutamiento masivo y selección por competencias, garantizando el ingreso de talento alineado a las necesidades críticas del negocio.
+                        </p>
+                        <div class="pt-3 border-t border-slate-800 space-y-1.5 text-xs text-slate-300">
+                            <strong class="text-white block mb-1">Puedo ayudarte con:</strong>
+                            <p>✓ Análisis del perfil a seleccionar.</p>
+                            <p>✓ Publicación y filtrado de currículums y primera entrevista.</p>
+                            <p>✓ Entrevista en profundidad con análisis de competencias.</p>
+                            <p>✓ Elaboración de informe completo de entrevistas.</p>
+                            <p>✓ Selecciones grupales e individuales.</p>
+                            <p>✓ Preparación del onboarding (ingreso) de los empleados según los diferentes puestos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contacto" class="block text-center bg-avanzarBlue hover:bg-avanzarBlueHover text-white font-bold py-3 rounded-xl transition text-xs uppercase">Consultar Selección</a>
+                </div>
+            </div>
+
+            <!-- 2. Eficiencia Organizacional -->
+            <div class="bg-avanzarCard rounded-3xl border border-avanzarCardBorder overflow-hidden shadow-xl flex flex-col justify-between">
+                <div>
+                    <div class="h-44 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80" alt="Eficiencia Organizacional" class="w-full h-full object-cover opacity-70">
+                        <div class="absolute inset-0 bg-gradient-to-t from-avanzarCard via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 bg-avanzarBlue/90 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Compensaciones & Procesos</span>
+                    </div>
+
+                    <div class="p-6 md:p-8 space-y-3">
+                        <h3 class="font-bold text-white text-xl">Eficiencia Organizacional, Beneficios y Remuneración</h3>
+                        <p class="text-xs text-amber-400 font-bold leading-relaxed">
+                            Planes de Beneficios para Empleados y Análisis de Remuneraciones con Brechas Salariales.
+                        </p>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            A lo largo de mi experiencia profesional pude trabajar en la gestión de nóminas masivas (hasta 300 colaboradores), desarrollo y control de variables salariales y optimización de procesos mediante Excel avanzado y SAP. Me especializo en transformar la administración de personal en una ventaja competitiva.
+                        </p>
+                        <div class="pt-3 border-t border-slate-800 space-y-1.5 text-xs text-slate-300">
+                            <strong class="text-white block mb-1">Puedo ayudarte a:</strong>
+                            <p>✓ Desarrollar KPIs de actualización permanente para la toma de decisiones.</p>
+                            <p>✓ Crear planes de beneficios para empleados.</p>
+                            <p>✓ Revisar los salarios abonados encontrando mejoras.</p>
+                            <p>✓ Analizar y desarrollar remuneraciones variables por cumplimiento de objetivos.</p>
+                            <p>✓ Revisar las remuneraciones internas y escalas salariales.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contacto" class="block text-center bg-avanzarBlue hover:bg-avanzarBlueHover text-white font-bold py-3 rounded-xl transition text-xs uppercase">Consultar Remuneraciones</a>
+                </div>
+            </div>
+
+            <!-- 3. Capacitaciones con IA -->
+            <div class="bg-avanzarCard rounded-3xl border border-avanzarCardBorder overflow-hidden shadow-xl flex flex-col justify-between">
+                <div>
+                    <div class="h-44 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" alt="Capacitaciones con IA" class="w-full h-full object-cover opacity-70">
+                        <div class="absolute inset-0 bg-gradient-to-t from-avanzarCard via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 bg-avanzarBlue/90 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Capacitación & IA</span>
+                    </div>
+
+                    <div class="p-6 md:p-8 space-y-3">
+                        <h3 class="font-bold text-white text-xl">Diseñadora de Experiencias de Aprendizaje</h3>
+                        <p class="text-xs text-amber-400 font-bold leading-relaxed">
+                            Talleres prácticos e implementación de IA para el desarrollo profesional.
+                        </p>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Mi enfoque combina el Coaching Ontológico con el diseño instruccional moderno. Desarrollo programas de capacitación integral que no solo informan, sino que transforman. Además, utilizo IA para estructurar módulos de aprendizaje dinámicos y adaptados al ritmo de cada organización, garantizando un alto impacto en la cultura laboral.
+                        </p>
+                        <div class="pt-3 border-t border-slate-800 space-y-1.5 text-xs text-slate-300">
+                            <strong class="text-white block mb-1">Puedo asistirte con:</strong>
+                            <p>✓ Desarrollo de capacitaciones y/o talleres presenciales, virtuales o mixtos.</p>
+                            <p>✓ Utilización de estrategias de coaching para el impacto del aprendizaje.</p>
+                            <p>✓ Creación de planes de aprendizaje a medida.</p>
+                            <p>✓ Uso de IA para la formación didáctica y videos repetitivos.</p>
+                            <p>✓ Gamificación para fomentar el aprendizaje sanamente competitivo.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contacto" class="block text-center bg-avanzarBlue hover:bg-avanzarBlueHover text-white font-bold py-3 rounded-xl transition text-xs uppercase">Consultar Capacitaciones</a>
+                </div>
+            </div>
+
+            <!-- 4. Gestión de Clima & Cultura -->
+            <div class="bg-avanzarCard rounded-3xl border border-avanzarCardBorder overflow-hidden shadow-xl flex flex-col justify-between">
+                <div>
+                    <div class="h-44 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80" alt="Gestión de Clima Organizacional" class="w-full h-full object-cover opacity-70">
+                        <div class="absolute inset-0 bg-gradient-to-t from-avanzarCard via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 bg-avanzarBlue/90 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Diagnóstico de Clima</span>
+                    </div>
+
+                    <div class="p-6 md:p-8 space-y-3">
+                        <h3 class="font-bold text-white text-xl">Gestión de Clima & Cultura</h3>
+                        <p class="text-xs text-amber-400 font-bold leading-relaxed">
+                            "¿Sabes cuánto le cuesta a tu empresa un mal clima laboral?"
+                        </p>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Un equipo desmotivado impacta directamente en tus resultados financieros. Mi servicio de Diagnóstico e Impacto Organizacional utiliza herramientas de medición precisas y análisis potenciado por IA para transformar el ambiente de trabajo en una ventaja competitiva.
+                        </p>
+                        <div class="pt-3 border-t border-slate-800 space-y-1.5 text-xs text-slate-300">
+                            <strong class="text-white block mb-1">Puedo apoyarte con:</strong>
+                            <p>✓ <strong>Diagnóstico de Situación:</strong> Encuestas de clima personalizadas según el sector.</p>
+                            <p>✓ <strong>Análisis con Soporte de IA:</strong> Procesamiento de datos cualitativos e identificación de patrones emocional.</p>
+                            <p>✓ <strong>Validación de Datos:</strong> Cruce de clima con rotación, ausentismo y objetivos.</p>
+                            <p>✓ Propuestas de estrategias para trabajar en puntos críticos.</p>
+                            <p>✓ <strong>Reportes Estratégicos para Dirección:</strong> KPIs claros para tomar decisiones.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contacto" class="block text-center bg-avanzarBlue hover:bg-avanzarBlueHover text-white font-bold py-3 rounded-xl transition text-xs uppercase">Consultar Clima Laboral</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 5. IMPULSÁ TU GESTIÓN -->
+        <div class="bg-avanzarCard p-6 md:p-10 rounded-3xl border border-avanzarBlue space-y-8 shadow-2xl relative overflow-hidden">
+            
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-800 pb-6 gap-4">
+                <div class="space-y-1">
+                    <span class="text-avanzarAccent font-bold text-xs uppercase tracking-widest">Acompañamiento Personalizado</span>
+                    <h3 class="text-2xl md:text-3xl font-bold text-white">Impulsá tu Gestión: Mentoría y Coaching a tu medida</h3>
+                </div>
+                <div class="bg-sky-950 border border-avanzarCyan/50 px-4 py-2 rounded-2xl flex items-center space-x-3 shrink-0">
+                    <span class="text-2xl">📈</span>
+                    <div>
+                        <p class="text-xs font-bold text-avanzarCyan">+40% Eficiencia Estimada</p>
+                        <p class="text-[10px] text-slate-400">Metodología Medible 1 a 1</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-xs md:text-sm text-slate-300 leading-relaxed">
+                ¿Quieres resolver las cosas tú mismo pero no sabes por dónde empezar o ya probaste varias alternativas y ninguna te da el resultado esperado? Tenés la posibilidad de aprender a hacerlo, armar un sistema a tu medida y desarrollar todo tu potencial desde un acompañamiento personalizado basado en el coaching ontológico. Te cuento cómo podemos hacerlo juntos:
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-6 text-xs">
+                
+                <!-- Modalidad 1 -->
+                <div class="bg-slate-900/90 rounded-2xl border border-slate-800 overflow-hidden space-y-3 relative flex flex-col justify-between">
+                    <div>
+                        <div class="h-32 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=400&q=80" alt="Mentoría 1 a 1" class="w-full h-full object-cover opacity-70">
+                            <span class="absolute top-2 left-2 bg-avanzarBlue text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">Modalidad 01</span>
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <h4 class="font-bold text-white text-base">1. Mentoría</h4>
+                            <p class="text-amber-400 font-bold text-[11px]">"Aprende a hacerlo"</p>
+                            <p class="text-slate-400 text-[11px]">Ideal para el dueño o líder que quiere entender el proceso.</p>
+                            <p class="text-slate-300 pt-2 border-t border-slate-800"><strong>Qué incluye:</strong> Sesiones 1 a 1 para abordar desafíos puntuales con soluciones realistas y medibles sesión a sesión.</p>
+                            <p class="text-slate-300"><strong>El plus:</strong> Analizamos y revisamos estrategias hasta obtener el proceso adecuado.</p>
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0">
+                        <div class="bg-sky-950/80 p-2.5 rounded-xl border border-sky-800/50 text-avanzarCyan font-semibold text-[11px] text-center">
+                            🎯 Resultado: Plan de acción claro para tus propósitos.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modalidad 2 -->
+                <div class="bg-slate-900/90 rounded-2xl border border-slate-800 overflow-hidden space-y-3 relative flex flex-col justify-between">
+                    <div>
+                        <div class="h-32 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80" alt="Tablero de Control Estratégico" class="w-full h-full object-cover opacity-70">
+                            <span class="absolute top-2 left-2 bg-avanzarBlue text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">Modalidad 02</span>
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <h4 class="font-bold text-white text-base">2. Consultoría Estratégica</h4>
+                            <p class="text-amber-400 font-bold text-[11px]">"Armemos el sistema"</p>
+                            <p class="text-slate-400 text-[11px]">Para negocios que necesitan estructura, pero la ejecutarán ustedes mismos.</p>
+                            <p class="text-slate-300 pt-2 border-t border-slate-800"><strong>Qué incluye:</strong> Rediseño a medida de tu empresa para lograr objetivos establecidos.</p>
+                            <p class="text-slate-300"><strong>El plus:</strong> Creación de tableros de control para monitorear el avance y accionar a tiempo.</p>
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0">
+                        <div class="bg-sky-950/80 p-2.5 rounded-xl border border-sky-800/50 text-avanzarCyan font-semibold text-[11px] text-center">
+                            📊 Resultado: Plantillas y sistema listo para usar.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modalidad 3 -->
+                <div class="bg-slate-900/90 rounded-2xl border border-slate-800 overflow-hidden space-y-3 relative flex flex-col justify-between">
+                    <div>
+                        <div class="h-32 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=400&q=80" alt="Liderazgo y Coaching" class="w-full h-full object-cover opacity-70">
+                            <span class="absolute top-2 left-2 bg-avanzarBlue text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">Modalidad 03</span>
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <h4 class="font-bold text-white text-base">3. Coaching para Líderes</h4>
+                            <p class="text-amber-400 font-bold text-[11px]">"Desarrolla tu potencial"</p>
+                            <p class="text-slate-400 text-[11px]">Enfoque en todo tu potencial para sacar tu mejor versión.</p>
+                            <p class="text-slate-300 pt-2 border-t border-slate-800"><strong>Qué incluye:</strong> Coaching Ontológico Profesional para trabajar limitaciones de acción actuales.</p>
+                            <p class="text-slate-300"><strong>El plus:</strong> Manejo práctico de sucesos para abrir nuevas posibilidades de elección.</p>
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0">
+                        <div class="bg-sky-950/80 p-2.5 rounded-xl border border-sky-800/50 text-avanzarCyan font-semibold text-[11px] text-center">
+                            🚀 Resultado: Mayor confianza para liderar y motivar.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 6. ESTRUCTURA ORGANIZACIONAL (MODULO VISUAL EVOCATIVO DE ALTO IMPACTO) -->
+        <div class="bg-avanzarCard rounded-3xl border border-avanzarCardBorder shadow-xl overflow-hidden grid md:grid-cols-12">
+            
+            <div class="md:col-span-7 p-6 md:p-8 space-y-4 flex flex-col justify-between">
+                <div class="space-y-3">
+                    <span class="text-avanzarCyan font-bold text-xs uppercase tracking-wider">Estructura Organizacional</span>
+                    <h3 class="font-bold text-white text-xl md:text-2xl leading-tight">¿Quién hace qué? Definimos roles para potenciar tu productividad</h3>
+                    <p class="text-xs text-amber-400 font-bold">"Si todos hacen de todo, nadie es responsable."</p>
+                    <p class="text-xs md:text-sm text-slate-300 leading-relaxed">
+                        Mi servicio de consultoría te da la metodología para documentar cada rol de forma profesional. Te entrego descripciones de funciones claras y herramientas para que vos mismo puedas gestionar el crecimiento de tu estructura sin perder el control.
+                    </p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-3 text-xs text-slate-300 pt-2">
+                    <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800 flex items-start space-x-2">
+                        <span class="text-avanzarCyan font-bold">✓</span>
+                        <span>Definimos objetivos generales y por áreas.</span>
+                    </div>
+                    <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800 flex items-start space-x-2">
+                        <span class="text-avanzarCyan font-bold">✓</span>
+                        <span>Mapeo actual de puestos y flujos.</span>
+                    </div>
+                    <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800 flex items-start space-x-2">
+                        <span class="text-avanzarCyan font-bold">✓</span>
+                        <span>Eliminación de sobreposición de tareas.</span>
+                    </div>
+                    <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800 flex items-start space-x-2">
+                        <span class="text-avanzarCyan font-bold">✓</span>
+                        <span>Documentación para onboarding e inducción.</span>
+                    </div>
                 </div>
             </div>
             
-            <div class="flex items-center space-x-2">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping mr-2"></span>
-                    Bot Activo Diario
-                </span>
-            </div>
-        </div>
-    </header>
+            <!-- Imagen Evocativa de Alto Impacto con Badges Flotantes -->
+            <div class="md:col-span-5 relative min-h-[300px] md:min-h-full overflow-hidden border-t md:border-t-0 md:border-l border-slate-800">
+                <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80" alt="Mapeo y Alineación de Estructura Organizacional" class="w-full h-full object-cover opacity-80 transition duration-500 hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-avanzarDark via-avanzarDark/20 to-transparent"></div>
+                
+                <!-- Badge Flotante Superior -->
+                <div class="absolute top-4 left-4 right-4 bg-slate-950/90 backdrop-blur-md p-3 rounded-2xl border border-avanzarCyan/40 shadow-xl space-y-1">
+                    <div class="flex items-center space-x-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span class="text-[11px] font-bold text-white uppercase tracking-wider">Alineación de Procesos</span>
+                    </div>
+                    <p class="text-[10px] text-avanzarCyan font-medium">100% Claridad en Mandos Directivos & Operativos</p>
+                </div>
 
-    <main class="flex-1 max-w-5xl w-full mx-auto p-4 md:p-6 space-y-6">
-        
-        <!-- Stats Bar -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-4 flex items-center justify-between">
-                <div>
-                    <p class="text-xs text-slate-400 font-medium">Vacantes Detectadas</p>
-                    <p id="counter-vacantes" class="text-2xl font-bold text-sky-400 mt-1">Cargando...</p>
-                </div>
-                <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center text-lg">
-                    <i class="fa-solid fa-briefcase"></i>
-                </div>
-            </div>
-
-            <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-4 flex items-center justify-between">
-                <div>
-                    <p class="text-xs text-slate-400 font-medium">Filtro de Área</p>
-                    <p class="text-sm font-semibold text-slate-200 mt-1">RRHH / Selección / Gestión</p>
-                </div>
-                <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-lg">
-                    <i class="fa-solid fa-user-check"></i>
-                </div>
-            </div>
-
-            <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-4 flex items-center justify-between">
-                <div>
-                    <p class="text-xs text-slate-400 font-medium">Última Actualización</p>
-                    <p id="last-update" class="text-sm font-semibold text-emerald-400 mt-1">Hoy</p>
-                </div>
-                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg">
-                    <i class="fa-solid fa-clock-rotate-left"></i>
+                <!-- Badge Flotante Inferior -->
+                <div class="absolute bottom-4 left-4 right-4 bg-slate-900/90 backdrop-blur-md p-3 rounded-xl border border-slate-700 text-[10px] text-slate-300 flex items-center justify-between">
+                    <span>Organización Eficiente</span>
+                    <span class="bg-avanzarBlue text-white font-bold px-2 py-0.5 rounded-md text-[9px] uppercase">Garantizada</span>
                 </div>
             </div>
         </div>
 
-        <!-- Banner -->
-        <div class="bg-gradient-to-r from-sky-950/80 to-slate-800/90 border border-sky-500/30 rounded-2xl p-5 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4">
-            <div class="space-y-1 text-center md:text-left">
-                <h3 class="text-sm font-bold text-sky-300 flex items-center justify-center md:justify-start">
-                    <i class="fa-solid fa-robot mr-2 text-sky-400"></i> Control de Novedades Diarias
-                </h3>
-                <p class="text-xs text-slate-300">Las ofertas con etiqueta <span class="text-emerald-400 font-bold">✨ ¡Nueva hoy!</span> son las recién incorporadas en este escaneo.</p>
-            </div>
-            <button onclick="cargarDatosVacantes()" class="bg-sky-600 hover:bg-sky-500 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-lg transition flex items-center space-x-2 shrink-0">
-                <i class="fa-solid fa-rotate"></i>
-                <span>Refrescar Panel</span>
-            </button>
+    </section>
+
+    <!-- EMPRESAS QUE CONFÍAN EN NUESTROS SERVICIOS -->
+    <section id="casos" class="py-16 px-4 max-w-6xl mx-auto space-y-10">
+        <div class="text-center space-y-2">
+            <span class="text-xs text-avanzarCyan font-bold uppercase tracking-widest">Prueba Social & Trayectoria</span>
+            <h2 class="text-3xl font-bold text-white uppercase tracking-tight">Empresas que confían en nuestros servicios</h2>
         </div>
 
-        <!-- Job List Section -->
-        <div class="space-y-4">
-            <h2 class="text-sm font-semibold text-slate-400 uppercase tracking-wider flex items-center">
-                <i class="fa-solid fa-list-check mr-2"></i> Oportunidades Disponibles en Uruguay
+        <div class="grid md:grid-cols-2 gap-8">
+            
+            <!-- Caso TESAI (Verde Esmeralda) -->
+            <div class="bg-avanzarCard rounded-3xl border border-avanzarCardBorder overflow-hidden shadow-xl flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div class="h-44 bg-slate-900 p-6 flex flex-col justify-center items-start relative border-b border-slate-800">
+                        <!-- ETIQUETA EN VERDE ESMERALDA -->
+                        <span class="bg-emerald-600 text-white font-black text-[10px] px-3 py-1 rounded-full uppercase mb-2">Espacio Natural</span>
+                        
+                        <!-- Logo TESAI con Tipografía Corporativa -->
+                        <div class="flex items-center space-x-2 pt-1">
+                            <span class="text-4xl font-light text-emerald-400 tracking-widest uppercase">TESAÍ</span>
+                            <span class="text-xs text-slate-400 border-l border-slate-700 pl-2 font-medium tracking-tight">ESPACIO<br>NATURAL</span>
+                        </div>
+                    </div>
+
+                    <div class="p-6 md:p-8 pt-0 space-y-3">
+                        <h3 class="font-bold text-white text-xl">TESAI - Espacio Natural</h3>
+                        <blockquote class="text-xs text-slate-300 italic leading-relaxed border-l-2 border-emerald-400 pl-3">
+                            "TESAI - Espacio Natural tenía un equipo con potencial pero sin estructura clara. Trabajamos en la organización interna, las descripciones de puesto y la evaluación del desempeño — logrando reducir la curva de aprendizaje y liberar al dueño para enfocarse en hacer crecer el negocio."
+                        </blockquote>
+                        <div class="pt-3 border-t border-slate-800 text-xs text-slate-300 space-y-1">
+                            <strong class="text-emerald-400 block mb-1">Servicios brindados:</strong>
+                            <p>• Asesoramiento y mentoría profesional.</p>
+                            <p>• Descripciones de puestos.</p>
+                            <p>• Evaluaciones de desempeño del personal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Caso Inmobiliaria Propicks -->
+            <div class="bg-avanzarCard rounded-3xl border border-avanzarCardBorder overflow-hidden shadow-xl flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div class="h-44 bg-white p-6 flex flex-col justify-center items-center relative border-b border-slate-800">
+                        <!-- ETIQUETA EN NARANJA BRANDING -->
+                        <span class="absolute top-4 left-4 bg-orange-500 text-slate-950 font-black text-[10px] px-3 py-1 rounded-full uppercase">Sector Inmobiliario</span>
+                        
+                        <!-- Logo Propicks Solamente -->
+                        <div class="flex items-center space-x-1 pt-2">
+                            <span class="text-4xl font-extrabold text-slate-900 tracking-tight">Propic</span>
+                            <span class="text-4xl font-extrabold text-orange-500 tracking-tight">k</span>
+                            <span class="text-4xl font-extrabold text-slate-900 tracking-tight">s</span>
+                        </div>
+                    </div>
+
+                    <div class="p-6 md:p-8 pt-0 space-y-3">
+                        <h3 class="font-bold text-white text-xl">Inmobiliaria Propicks</h3>
+                        <blockquote class="text-xs text-slate-300 italic leading-relaxed border-l-2 border-orange-500 pl-3">
+                            "Propicks necesitaba incorporar agentes inmobiliarios alineados a su cultura. Desarrollamos un proceso de selección por competencias y onboarding con role playing — logrando reducir la curva de aprendizaje de los nuevos ingresos."
+                        </blockquote>
+                        <div class="pt-3 border-t border-slate-800 text-xs text-slate-300 space-y-1">
+                            <strong class="text-orange-400 block mb-1">Servicios brindados:</strong>
+                            <p>• Asesoramiento profesional.</p>
+                            <p>• Reclutamiento de agentes inmobiliarios.</p>
+                            <p>• Selección por competencias.</p>
+                            <p>• Onboarding con entrenamiento de role playing para el desarrollo de competencias.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- RECURSOS ADAPTADOS -->
+    <section id="recursos" class="py-16 px-4 max-w-6xl mx-auto space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+            <h2 class="text-2xl md:text-3xl font-bold text-white uppercase tracking-tight">
+                ¿Quieres Saber Más Sobre <span class="text-avanzarCyan">Gestión de Talento</span>?
             </h2>
-            <div id="jobs-container" class="space-y-3"></div>
+            <p class="text-slate-400 text-xs uppercase tracking-widest font-bold">Seleccionamos Material para Ti</p>
         </div>
 
-    </main>
+        <div class="grid md:grid-cols-4 gap-6">
+            <div class="bg-avanzarCard rounded-3xl border border-avanzarCardBorder overflow-hidden shadow-sm flex flex-col justify-between">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80" alt="Selección por Competencias" class="w-full h-36 object-cover opacity-80">
+                    <div class="p-5 text-center space-y-2">
+                        <span class="text-avanzarCyan font-bold text-xs">SELECCIÓN</span>
+                        <h4 class="font-bold text-white text-xs leading-snug">SELECCIÓN POR COMPETENCIAS</h4>
+                        <p class="text-[11px] text-slate-400 leading-normal">Cómo identificar perfiles comerciales y operativos con verdadera adecuación cultural.</p>
+                    </div>
+                </div>
+                <div class="p-4 pt-0 text-center">
+                    <a href="#contacto" class="inline-block border border-avanzarCyan text-avanzarCyan hover:bg-avanzarCyan hover:text-slate-950 rounded-full px-4 py-1.5 text-xs font-bold transition">CONOZCA MÁS</a>
+                </div>
+            </div>
 
-    <footer class="bg-slate-800/50 border-t border-slate-800 py-4 text-center text-xs text-slate-500 mt-auto">
-        Radar de Empleo RRHH Uruguay • Sistema Autónomo para Noelia
+            <div class="bg-avanzarCard rounded-3xl border border-avanzarCardBorder overflow-hidden shadow-sm flex flex-col justify-between">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=400&q=80" alt="KPIs y Salarios" class="w-full h-36 object-cover opacity-80">
+                    <div class="p-5 text-center space-y-2">
+                        <span class="text-avanzarCyan font-bold text-xs">REMUNERACIONES</span>
+                        <h4 class="font-bold text-white text-xs leading-snug">KPIs & REMUNERACIÓN VARIABLE</h4>
+                        <p class="text-[11px] text-slate-400 leading-normal">Análisis de esquemas salariales e incentivos por objetivos para motivar al equipo.</p>
+                    </div>
+                </div>
+                <div class="p-4 pt-0 text-center">
+                    <a href="#contacto" class="inline-block border border-avanzarCyan text-avanzarCyan hover:bg-avanzarCyan hover:text-slate-950 rounded-full px-4 py-1.5 text-xs font-bold transition">CONOZCA MÁS</a>
+                </div>
+            </div>
+
+            <div class="bg-avanzarCard rounded-3xl border border-avanzarCardBorder overflow-hidden shadow-sm flex flex-col justify-between">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=400&q=80" alt="Capacitación con IA" class="w-full h-36 object-cover opacity-80">
+                    <div class="p-5 text-center space-y-2">
+                        <span class="text-avanzarCyan font-bold text-xs">CAPACITACIÓN</span>
+                        <h4 class="font-bold text-white text-xs leading-snug">IA & TALLERES PRÁCTICOS</h4>
+                        <p class="text-[11px] text-slate-400 leading-normal">Uso de inteligencia artificial y gamificación para acelerar el aprendizaje laboral.</p>
+                    </div>
+                </div>
+                <div class="p-4 pt-0 text-center">
+                    <a href="#contacto" class="inline-block border border-avanzarCyan text-avanzarCyan hover:bg-avanzarCyan hover:text-slate-950 rounded-full px-4 py-1.5 text-xs font-bold transition">CONOZCA MÁS</a>
+                </div>
+            </div>
+
+            <div class="bg-avanzarCard rounded-3xl border border-avanzarCardBorder overflow-hidden shadow-sm flex flex-col justify-between">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=400&q=80" alt="Diagnóstico de Clima" class="w-full h-36 object-cover opacity-80">
+                    <div class="p-5 text-center space-y-2">
+                        <span class="text-avanzarCyan font-bold text-xs">CLIMA LABORAL</span>
+                        <h4 class="font-bold text-white text-xs leading-snug">DIAGNÓSTICO DE CLIMA</h4>
+                        <p class="text-[11px] text-slate-400 leading-normal">Medición precisa de ausentismo y rotación para retener el talento estratégico.</p>
+                    </div>
+                </div>
+                <div class="p-4 pt-0 text-center">
+                    <a href="#contacto" class="inline-block border border-avanzarCyan text-avanzarCyan hover:bg-avanzarCyan hover:text-slate-950 rounded-full px-4 py-1.5 text-xs font-bold transition">CONOZCA MÁS</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO DE CONTACTO CON ENVÍO AUTOMÁTICO A WHATSAPP -->
+    <section id="contacto" class="py-16 px-4 max-w-3xl mx-auto">
+        <div class="bg-avanzarCard p-8 md:p-10 rounded-3xl border border-avanzarCardBorder shadow-2xl space-y-6">
+            <div class="text-center space-y-1">
+                <span class="text-xs text-avanzarCyan font-bold uppercase tracking-widest">Atención Personalizada</span>
+                <h2 class="text-2xl font-bold text-white uppercase tracking-tight">Agendar Diagnóstico Inicial</h2>
+                <p class="text-slate-400 text-xs">Conversemos directamente sobre la gestión de personal en tu empresa.</p>
+            </div>
+
+            <form id="contactForm" onsubmit="sendToWhatsApp(event)" class="space-y-4 text-xs">
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="font-semibold text-slate-300 uppercase">Nombre o Empresa</label>
+                        <input type="text" id="nombreInput" required placeholder="Ej: Pyme / Escritorio Rural" class="w-full mt-1 bg-slate-900 border border-slate-800 rounded-xl p-3 text-white outline-none focus:border-avanzarCyan">
+                    </div>
+                    <div>
+                        <label class="font-semibold text-slate-300 uppercase">Teléfono / WhatsApp</label>
+                        <input type="tel" id="telInput" required placeholder="099 123 456" class="w-full mt-1 bg-slate-900 border border-slate-800 rounded-xl p-3 text-white outline-none focus:border-avanzarCyan">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="font-semibold text-slate-300 uppercase">Rubro Principal</label>
+                    <select id="rubroInput" class="w-full mt-1 bg-slate-900 border border-slate-800 rounded-xl p-3 text-slate-300 outline-none focus:border-avanzarCyan">
+                        <option value="Pyme / Emprendimiento Corporativo">Pyme / Emprendimiento Corporativo</option>
+                        <option value="Escritorio Rural / Ganadería">Escritorio Rural / Ganadería</option>
+                        <option value="Inmobiliaria / Desarrollo Real Estate">Inmobiliaria / Desarrollo Real Estate</option>
+                        <option value="Empresa Agroindustrial / Citrícola">Empresa Agroindustrial / Citrícola</option>
+                        <option value="Otro Sector">Otro Sector</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="w-full bg-avanzarAccent hover:bg-avanzarAccentHover text-slate-950 font-black py-4 rounded-xl shadow-lg transition uppercase tracking-wider text-xs">
+                    Enviar Consulta vía WhatsApp
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-avanzarCardBorder py-8 text-center text-slate-400 text-xs space-y-2 bg-avanzarDark">
+        <div class="flex justify-center items-center space-x-2">
+            <div class="bg-white p-1.5 rounded-md">
+                <svg class="h-6 w-auto" viewBox="0 0 220 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 25 65 C 25 57, 33 57, 33 65 C 33 73, 25 73, 25 65 Z" fill="#005b8e"/>
+                    <path d="M 20 95 C 20 80, 38 80, 38 95 Z" fill="#005b8e"/>
+                    <path d="M 50 40 C 50 28, 66 28, 66 40 C 66 52, 50 52, 50 40 Z" fill="#005b8e"/>
+                    <path d="M 40 100 L 58 55 L 76 100 L 66 100 L 58 75 L 50 100 Z" fill="#005b8e"/>
+                    <path d="M 78 65 C 78 57, 86 57, 86 65 C 86 73, 78 73, 78 65 Z" fill="#005b8e"/>
+                    <path d="M 73 95 C 73 80, 91 80, 91 95 Z" fill="#005b8e"/>
+                    <text x="88" y="72" font-family="'Brush Script MT', cursive, sans-serif" font-size="46" font-weight="bold" font-style="italic" fill="#005b8e">Avanzar</text>
+                    <path d="M 88 82 Q 145 92 195 78" stroke="#005b8e" stroke-width="4.5" fill="none"/>
+                    <text x="148" y="108" font-family="'Arial Black', sans-serif" font-size="22" font-weight="900" fill="#005b8e">RH</text>
+                </svg>
+            </div>
+            <span class="font-bold text-white">Avanzar RH</span>
+        </div>
+        <p>&copy; 2026 Avanzar RH - Lic. Noelia Gorgerino.</p>
+        <p class="text-[11px] text-slate-500">Montevideo - Salto - Córdoba | Especialistas en Pymes, Agro & Real Estate</p>
     </footer>
 
+    <!-- JAVASCRIPT DIRECTO A WHATSAPP -->
     <script>
-        const vacantesRespaldo = [
-            {
-                id: 1,
-                titulo: "Generalista de Recursos Humanos",
-                empresa: "Empresa del Sector Servicios",
-                ubicacion: "Montevideo",
-                horas: 3,
-                portal: "BuscoJobs UY",
-                descripcion: "Coordinación de ingresos, inducción, clima organizacional y soporte a la dirección.",
-                url: "https://www.buscojobs.com.uy/ofertas/ts1016/trabajo-de-recursos-humanos/montevideo_",
-                nuevo: true
-            },
-            {
-                id: 2,
-                titulo: "Responsable de Gestión Humana",
-                empresa: "ManpowerGroup Uruguay",
-                ubicacion: "Montevideo",
-                horas: 8,
-                portal: "Computrabajo UY",
-                descripcion: "Gestión integral del área de Personas, reclutamiento activo y liquidación básica.",
-                url: "https://uy.computrabajo.com/trabajo-de-recursos-humanos-en-montevideo",
-                nuevo: false
-            }
-        ];
-
-        async function cargarDatosVacantes() {
-            const container = document.getElementById('jobs-container');
-            container.innerHTML = '<div class="text-center py-8 text-slate-400 text-sm"><i class="fa-solid fa-spinner animate-spin mr-2"></i> Cargando vacantes...</div>';
-
-            let listaOfertas = vacantesRespaldo;
-
-            try {
-                const response = await fetch('./vacantes.json?t=' + Date.now());
-                if (response.ok) {
-                    const json = await response.json();
-                    if (json.vacantes && json.vacantes.length > 0) {
-                        listaOfertas = json.vacantes;
-                        if (json.ultima_actualizacion) {
-                            document.getElementById('last-update').textContent = json.ultima_actualizacion;
-                        }
-                    }
-                }
-            } catch (e) {
-                console.log("Usando datos de respaldo...");
-            }
-
-            renderizarTarjetas(listaOfertas);
+        function sendToWhatsApp(e) {
+            e.preventDefault();
+            
+            const nombre = document.getElementById('nombreInput').value;
+            const tel = document.getElementById('telInput').value;
+            const rubro = document.getElementById('rubroInput').value;
+            
+            const whatsappNum = "59899343810";
+            
+            const mensaje = `Hola Noelia, quisiera solicitar un Diagnóstico Inicial para mi empresa:%0A%0A` +
+                            `👤 *Nombre / Empresa:* ${encodeURIComponent(nombre)}%0A` +
+                            `📱 *Teléfono de Contacto:* ${encodeURIComponent(tel)}%0A` +
+                            `🌾 *Rubro Principal:* ${encodeURIComponent(rubro)}`;
+            
+            window.open(`https://wa.me/${whatsappNum}?text=${mensaje}`, '_blank');
+            e.target.reset();
         }
-
-        function renderizarTarjetas(lista) {
-            const container = document.getElementById('jobs-container');
-            container.innerHTML = '';
-
-            lista.forEach(job => {
-                const card = document.createElement('div');
-                // Si el bot marca la propiedad 'nuevo' como true, resalta la tarjeta con un borde especial
-                const esNuevo = job.nuevo === true;
-                
-                card.className = `bg-slate-800/80 border ${esNuevo ? 'border-emerald-500/80 ring-1 ring-emerald-500/30' : 'border-slate-700'} rounded-2xl p-5 shadow-lg transition`;
-                
-                card.innerHTML = `
-                    <div class="flex flex-col sm:flex-row justify-between items-start gap-4">
-                        <div class="space-y-2 flex-1">
-                            <div class="flex flex-wrap items-center gap-2">
-                                ${esNuevo ? '<span class="bg-emerald-500/20 text-emerald-300 text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-emerald-500/30">✨ ¡Nueva hoy!</span>' : '<span class="bg-slate-700 text-slate-400 text-[11px] px-2.5 py-0.5 rounded-full">📁 Vista anteriormente</span>'}
-                                <span class="bg-sky-500/20 text-sky-300 text-[11px] px-2.5 py-0.5 rounded-full border border-sky-500/30">⏰ Hace ${job.horas || 4} hrs</span>
-                                <span class="bg-slate-700/60 text-slate-300 text-[11px] px-2.5 py-0.5 rounded-full">📍 ${job.ubicacion || 'Montevideo'}</span>
-                                <span class="bg-indigo-500/20 text-indigo-300 text-[11px] px-2.5 py-0.5 rounded-full border border-indigo-500/30">🌐 ${job.portal || 'Portal UY'}</span>
-                            </div>
-
-                            <h3 class="text-base font-bold text-slate-100">${job.titulo}</h3>
-                            <p class="text-xs text-slate-400">🏢 Empresa: ${job.empresa}</p>
-                            <p class="text-xs text-slate-300 leading-relaxed">${job.descripcion}</p>
-                        </div>
-
-                        <a href="${job.url}" target="_blank" class="bg-sky-600 hover:bg-sky-500 text-white text-xs font-semibold px-4 py-2.5 rounded-xl shadow transition shrink-0 flex items-center justify-center">
-                            👉 Postularme en el Portal
-                        </a>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-
-            document.getElementById('counter-vacantes').textContent = `${lista.length} Detectadas`;
-        }
-
-        window.onload = cargarDatosVacantes;
     </script>
 </body>
 </html>
-```
