@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarifario Comercial B2B | Avanzar RH</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        avanzar: {
+                            DEFAULT: '#0062A3',
+                            dark: '#004B7D',
+                            light: '#E6F0F8',
+                            border: '#B3D4EC'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        @media print {
+            .no-print { display: none !important; }
+            body { background-color: white !important; }
+            .shadow-sm, .shadow-md, .shadow-lg { box-shadow: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen py-8">
+
+    <!-- Header Corporativo Avanzar RH -->
+    <header class="max-w-5xl mx-auto px-4 mb-8">
+        <div class="bg-white border-2 border-avanzar-border rounded-2xl p-6 shadow-sm flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-4">
+                <!-- LOGO DE AVANZAR INTEGRADO AQUÍ -->
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczOD5sZ0_S2_x7Wk8hY2jYwZ1wM4H_M2x2n3iL2L2t4q1FjH6s1L_J2m-4T1FqV4KjY2L2J2V4L2H=w1080-h1080-no" alt="Logo Avanzar RH" class="h-16 w-auto" onerror="this.onerror=null; this.src='https://avanzargestionhumana.com/wp-content/uploads/2023/08/logo-avanzar.png';">
+                <div>
+                    <h1 class="font-extrabold text-xl text-avanzar leading-tight">Avanzar RH</h1>
+                    <p class="text-xs text-slate-500 font-medium">Propuesta de Inversión • Lic. Noelia Gorgerino</p>
+                </div>
+            </div>
+            <div class="text-right no-print">
+                <button onclick="window.print()" class="bg-avanzar hover:bg-avanzar-dark text-white font-bold text-xs px-5 py-2.5 rounded-xl transition shadow flex items-center gap-2">
+                    <span>Imprimir / Guardar PDF</span> 🖨️
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 space-y-12">
+
+        <!-- ==========================================
+             BLOQUE 1: SPRINTS (CROMÁTICA AMBAR / COBRE)
+             ========================================== -->
+        <section class="bg-amber-50/60 border-2 border-amber-200 rounded-3xl p-6 md:p-8 relative">
+            <span class="absolute -top-3.5 left-8 bg-amber-700 text-white text-[11px] font-extrabold px-4 py-1 rounded-full uppercase tracking-wider shadow-sm">
+                🟠 BLOQUE 1 • Intervenciones Puntuales (Proyectos Cerrados)
+            </span>
+
+            <div class="mb-6 pt-2">
+                <h2 class="text-xl font-black text-amber-950">Sprints de Eficiencia Operativa (14 Días)</h2>
+                <p class="text-xs text-amber-900/80 mt-1">Ideal para resolver problemas puntuales de raíz sin compromisos de cuotas mensuales a largo plazo.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+
+                <!-- SPRINT 1 -->
+                <div class="bg-white border border-amber-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <span class="bg-amber-100 text-amber-900 text-[10px] font-extrabold px-2.5 py-1 rounded uppercase">Estructura</span>
+                        <h3 class="text-base font-bold text-slate-900 mt-2.5">1. Ordenamiento Operativo</h3>
+                        <p class="text-[11px] text-slate-500 mt-1">Mapeo de tareas, fin del solapamiento de puestos y organización de supervisores.</p>
+                        
+                        <hr class="my-4 border-slate-100">
+
+                        <ul class="text-xs space-y-2 text-slate-700 mb-6">
+                            <li class="flex items-center gap-1.5"><span class="text-amber-600 font-bold">✔</span> Manuales de Funciones</li>
+                            <li class="flex items-center gap-1.5"><span class="text-amber-600 font-bold">✔</span> Protocolo de Onboarding</li>
+                            <li class="flex items-center gap-1.5"><span class="text-amber-600 font-bold">✔</span> Entrega cerrada en 14 días</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-amber-50 p-3.5 rounded-xl border border-amber-100 text-center">
+                        <span class="text-[10px] uppercase font-extrabold text-amber-800 block">Inversión Única Proyecto</span>
+                        <span class="text-2xl font-black text-amber-950">$29.900 <span class="text-xs font-bold text-amber-800">UYU</span></span>
+                        <span class="text-[10px] text-amber-900/70 block mt-0.5">En 2 pagos de $14.950 (Inicio / Entrega)</span>
+                    </div>
+                </div>
+
+                <!-- SPRINT 2 (RECRUITING / GARANTÍA) -->
+                <div class="bg-white border-2 border-emerald-500 rounded-2xl p-6 shadow-md flex flex-col justify-between relative transform md:-translate-y-1">
+                    <span class="absolute -top-2.5 right-4 bg-emerald-600 text-white text-[9px] font-extrabold px-3 py-0.5 rounded-full uppercase tracking-wide">
+                        Riesgo Cero
+                    </span>
+                    <div>
+                        <span class="bg-emerald-100 text-emerald-900 text-[10px] font-extrabold px-2.5 py-1 rounded uppercase">Avanzar Recruiting</span>
+                        <h3 class="text-base font-bold text-slate-900 mt-2.5">2. Selección por Competencias</h3>
+                        <p class="text-[11px] text-slate-500 mt-1">Búsqueda ejecutiva o técnica con entrevistas en profundidad e informe de idoneidad.</p>
+                        
+                        <hr class="my-4 border-slate-100">
+
+                        <ul class="text-xs space-y-2 text-slate-700 mb-6">
+                            <li class="flex items-center gap-1.5"><span class="text-emerald-600 font-bold">✔</span> Dossier comparativo de terna</li>
+                            <li class="flex items-center gap-1.5"><span class="text-emerald-600 font-bold">✔</span> Cobertura Reemplazo 90 días</li>
+                            <li class="flex items-center gap-1.5"><span class="text-emerald-600 font-bold">✔</span> Filtro de cultura Pyme / Agro</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-emerald-50 p-3.5 rounded-xl border border-emerald-100 text-center">
+                        <span class="text-[10px] uppercase font-extrabold text-emerald-800 block">Honorario por Búsqueda</span>
+                        <span class="text-2xl font-black text-emerald-950">1 Sueldo</span>
+                        <span class="text-[10px] text-emerald-800 block mt-0.5">Líquido del puesto (Piso $28.000 UYU)</span>
+                    </div>
+                </div>
+
+                <!-- SPRINT 3 -->
+                <div class="bg-white border border-amber-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <span class="bg-purple-100 text-purple-900 text-[10px] font-extrabold px-2.5 py-1 rounded uppercase">Capacitación</span>
+                        <h3 class="text-base font-bold text-slate-900 mt-2.5">3. Clima Laboral & Taller IA</h3>
+                        <p class="text-[11px] text-slate-500 mt-1">Diagnóstico rápido de fricciones del equipo + capacitación práctica en Inteligencia Artificial.</p>
+                        
+                        <hr class="my-4 border-slate-100">
+
+                        <ul class="text-xs space-y-2 text-slate-700 mb-6">
+                            <li class="flex items-center gap-1.5"><span class="text-amber-600 font-bold">✔</span> Reporte Directivo de Riesgos</li>
+                            <li class="flex items-center gap-1.5"><span class="text-amber-600 font-bold">✔</span> Taller de IA aplicado al trabajo</li>
+                            <li class="flex items-center gap-1.5"><span class="text-amber-600 font-bold">✔</span> Plan de motivación interna</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-amber-50 p-3.5 rounded-xl border border-amber-100 text-center">
+                        <span class="text-[10px] uppercase font-extrabold text-amber-800 block">Inversión Única Proyecto</span>
+                        <span class="text-2xl font-black text-amber-950">$19.900 <span class="text-xs font-bold text-amber-800">UYU</span></span>
+                        <span class="text-[10px] text-amber-900/70 block mt-0.5">Incluye taller de 2 horas para el equipo</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+             BLOQUE 2: MEMBRESÍAS (CROMÁTICA AZUL AVANZAR)
+             ========================================== -->
+        <section class="bg-avanzar-light border-2 border-avanzar-border rounded-3xl p-6 md:p-8 relative">
+            <span class="absolute -top-3.5 left-8 bg-avanzar text-white text-[11px] font-extrabold px-4 py-1 rounded-full uppercase tracking-wider shadow-sm">
+                🔵 BLOQUE 2 • Membresías Recurrentes (Acompañamiento Continuo)
+            </span>
+
+            <div class="mb-6 pt-2">
+                <h2 class="text-xl font-black text-avanzar-dark">Planes de Gestión Humana Continua (HRBP Externalizado)</h2>
+                <p class="text-xs text-slate-600 mt-1">Suscripción mensual para contar con la dirección de RRHH de Avanzar RH de forma permanente.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+
+                <!-- MEMBRESÍA 1: BÁSICO -->
+                <div class="bg-white border-2 border-slate-200 hover:border-avanzar rounded-2xl p-6 shadow-sm flex flex-col justify-between transition">
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="bg-slate-100 text-slate-700 text-[10px] font-extrabold px-2.5 py-1 rounded uppercase">Pyme Inicial</span>
+                            <span class="text-xl">🛡️</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900">Plan Esencial</h3>
+                        <p class="text-[11px] text-slate-500 mt-1">Para prevenir imprevistos laborales y contar con respaldo profesional directo.</p>
+
+                        <hr class="my-4 border-slate-100">
+
+                        <ul class="text-xs space-y-2.5 text-slate-700 mb-6">
+                            <li class="flex items-start gap-2">
+                                <span class="text-avanzar font-bold">✔</span>
+                                <span>WhatsApp directo prioritario para la gerencia.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-avanzar font-bold">✔</span>
+                                <span>Revisión preventiva de contratos y sanciones.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-avanzar font-bold">✔</span>
+                                <span>1 Reunión mensual de alineación (60 min).</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-avanzar font-bold">✔</span>
+                                <span>Vault Digital de Templates y modelos de RRHH.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-center">
+                        <span class="text-[10px] uppercase font-extrabold text-slate-500 block">Suscripción Mensual</span>
+                        <span class="text-2xl font-black text-slate-900">$10.900 <span class="text-xs font-bold text-slate-600">UYU/mes</span></span>
+                        <span class="text-[10px] text-avanzar font-bold block mt-1">($363 UYU / día • Menos que un café diario)</span>
+                    </div>
+                </div>
+
+                <!-- MEMBRESÍA 2: RECOMENDADO (DECOY / ANCLAJE) -->
+                <div class="bg-white border-2 border-avanzar rounded-2xl p-6 shadow-lg flex flex-col justify-between relative transform md:-translate-y-2">
+                    <span class="absolute -top-3 right-6 bg-avanzar text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow">
+                        Elección Inteligente ⭐
+                    </span>
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="bg-avanzar-light text-avanzar font-extrabold text-[10px] px-2.5 py-1 rounded uppercase">HRBP Partner</span>
+                            <span class="text-xl">🚀</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900">Plan Estratégico</h3>
+                        <p class="text-[11px] text-slate-500 mt-1">Acompañamiento activo para potenciar equipos en constante crecimiento.</p>
+
+                        <hr class="my-4 border-slate-100">
+
+                        <ul class="text-xs space-y-2.5 text-slate-700 mb-6">
+                            <li class="flex items-start gap-2">
+                                <span class="text-avanzar font-bold">✔</span>
+                                <span><strong>Todo lo del Plan Esencial +</strong></span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-avanzar font-bold">✔</span>
+                                <span>Reporte Pulso Mensual de indicadores y riesgos.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-avanzar font-bold">✔</span>
+                                <span>Medición trimestral de Clima Laboral con IA.</span>
+                            </li>
+                            <li class="bg-emerald-50 p-2 rounded-lg border border-emerald-200 text-[11px] text-emerald-900 font-bold">
+                                ⭐ 1 Selección al año con 50% bonificación + Cobertura 90 días.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-avanzar-light p-4 rounded-xl border border-avanzar-border text-center">
+                        <span class="text-[10px] uppercase font-extrabold text-avanzar-dark block">Suscripción Mensual</span>
+                        <span class="text-3xl font-black text-avanzar-dark">$18.900 <span class="text-xs font-bold text-avanzar">UYU/mes</span></span>
+                        <span class="text-[10px] text-emerald-700 font-bold block mt-1">($630 UYU / día • Excelente relación valor/precio)</span>
+                    </div>
+                </div>
+
+                <!-- MEMBRESÍA 3: CORPORATIVO -->
+                <div class="bg-white border-2 border-slate-200 hover:border-purple-600 rounded-2xl p-6 shadow-sm flex flex-col justify-between transition">
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="bg-purple-50 text-purple-700 text-[10px] font-extrabold px-2.5 py-1 rounded uppercase">Escala Mayor</span>
+                            <span class="text-xl">🏢</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900">Plan Integral</h3>
+                        <p class="text-[11px] text-slate-500 mt-1">Para empresas medianas que requieren consultoría estratégica presencial.</p>
+
+                        <hr class="my-4 border-slate-100">
+
+                        <ul class="text-xs space-y-2.5 text-slate-700 mb-6">
+                            <li class="flex items-start gap-2">
+                                <span class="text-purple-600 font-bold">✔</span>
+                                <span><strong>Todo lo del Plan Estratégico +</strong></span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-purple-600 font-bold">✔</span>
+                                <span>Visita presencial mensual en planta o establecimiento.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-purple-600 font-bold">✔</span>
+                                <span>Tablero de Control de KPIs en tiempo real.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-purple-600 font-bold">✔</span>
+                                <span>Auditoría continua de remuneraciones.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-purple-50 p-4 rounded-xl border border-purple-100 text-center">
+                        <span class="text-[10px] uppercase font-extrabold text-purple-800 block">Suscripción Mensual</span>
+                        <span class="text-2xl font-black text-purple-950">$34.900 <span class="text-xs font-bold text-purple-800">UYU/mes</span></span>
+                        <span class="text-[10px] text-purple-900/70 block mt-1">Sin contratos de permanencia (aviso 30 días)</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FOOTER NEUROMARKETING / NOTAS -->
+        <section class="bg-white border-2 border-slate-200 rounded-2xl p-6 text-xs text-slate-600 space-y-3">
+            <h3 class="font-bold text-avanzar uppercase text-[11px] tracking-wider">💡 Transparencia & Condiciones del Servicio</h3>
+            <div class="grid md:grid-cols-2 gap-4 text-[11px]">
+                <ul class="space-y-1.5">
+                    <li>• <strong>Sprints Operativos:</strong> 50% al inicio y 50% contra entrega de manuales e informes finales.</li>
+                    <li>• <strong>Garantía de Reemplazo:</strong> Todos los procesos de selección cuentan con 90 días de cobertura por escrito.</li>
+                </ul>
+                <ul class="space-y-1.5">
+                    <li>• <strong>Flexibilidad Total:</strong> Las membresías mensuales no exigen permanencia mínima y pueden pausarse con 30 días de aviso.</li>
+                    <li>• <strong>Sin sorpresas:</strong> Precios en Pesos Uruguayos ($ UYU) exentos de ajustes imprevistos.</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-400">
+        © 2026 Avanzar RH - Lic. Noelia Gorgerino | Documento de Uso Comercial Interno
+    </footer>
+
+</body>
+</html>
